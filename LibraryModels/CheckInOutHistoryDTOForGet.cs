@@ -12,6 +12,6 @@ namespace LibraryModels
         public DateTime DueDate { get; set; }
         public DateTime ReturnDate { get; set; }
         public BookDTO Book { get; set; }
-        public int BorrowerId { get; set; }
+        public Borrower Borrower { get; set; }
     }
 }

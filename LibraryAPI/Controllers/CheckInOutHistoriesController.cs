@@ -23,20 +23,20 @@ namespace LibraryAPI.Controllers
         }
 
         [HttpGet("api/histories/{id}")]
-        public async Task<ActionResult<CheckInOutHistory>> GetHistoryById(int id)
+        public async Task<ActionResult<CheckInOutHistoryDTOForGet>> GetHistoryById(int id)
         {
             var history = await _librarymanager.GetHistoryById(id);
             if (history != null)
-                return Ok(history);
+                return Ok(_mapper.Map<CheckInOutHistoryDTOForGet>(history));
             return NotFound();
         }
 
         [HttpGet("api/histories/")]
-        public async Task<ActionResult<CheckInOutHistory>> GetHistories()
+        public async Task<ActionResult<List<CheckInOutHistoryDTOForGet>>> GetHistories()
         {
             var histories = await _librarymanager.GetHistories();
             if (histories != null)
-                return Ok(histories);
+                return Ok(_mapper.Map<List<CheckInOutHistoryDTOForGet>>(histories));
             return NotFound();
         }
 
@@ -44,6 +44,15 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<List<CheckInOutHistory>>> SearchByStatus(bool status)
         {
             var histories = await _librarymanager.SearchByStatus(status);
+            if (histories != null)
+                return Ok(histories);
+            return NotFound();
+        }
+
+        [HttpGet("api/histories/query/{searchQuery}")]
+        public async Task<ActionResult<List<CheckInOutHistory>>> GetBySearchQuery(string searchQuery)
+        {
+            var histories = await _librarymanager.GetBySearchQuery(searchQuery);
             if (histories != null)
                 return Ok(histories);
             return NotFound();

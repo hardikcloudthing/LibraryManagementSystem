@@ -233,6 +233,18 @@ namespace LibraryRepository
                                                     .ToListAsync();
         }
 
+        public async Task<List<CheckInOutHistory>> GetBySearchQuery(string searchQuery)
+        {
+            var histories = await context.CheckInOutHistories.Include(h => h.Book)
+                                                             .ThenInclude(b => b.Author)
+                                                             .Include(h => h.Borrower)
+                                                             .ToListAsync();
+            if (searchQuery != null)
+                return histories.Where(h => h.Borrower.CId == searchQuery
+                                       || h.Borrower.Name == searchQuery).ToList();
+            return histories.ToList();
+        }
+
         public async Task<int> UpdateHistory(CheckInOutHistory history, int id)
         {
             history.Id = id;

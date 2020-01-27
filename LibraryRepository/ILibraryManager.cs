@@ -51,6 +51,8 @@ namespace LibraryRepository
 
         Task<List<CheckInOutHistory>> SearchByStatus(bool status);
 
+        Task<List<CheckInOutHistory>> GetBySearchQuery(string searchQuery);
+
         Task<int> UpdateHistory(CheckInOutHistory history, int id);
 
         Task<int> DeleteHistory(int id);
