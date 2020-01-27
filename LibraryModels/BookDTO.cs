@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace LibraryModels
 {
-    public class Book
+    public class BookDTO
     {
-        [Column("BookId")]
         public int Id { get; set; }
-
         public string ISBN { get; set; }
         public string Title { get; set; }
 
-        [ForeignKey("AuthoId")]
-        public virtual Author Author { get; set; }
+        public string AuthorName { get; set; }
     }
 }

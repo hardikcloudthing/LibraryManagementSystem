@@ -1,11 +1,15 @@
-﻿using System;
+﻿using LibraryRepository;
+using System;
 
 namespace LibraryManagementSystemForCloudThing
 {
-    internal class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            LibraryManager manager = new LibraryManager();
+
+            manager.AddBook();
         }
     }
 }

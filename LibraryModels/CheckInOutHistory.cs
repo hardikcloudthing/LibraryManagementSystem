@@ -8,17 +8,18 @@ namespace LibraryModels
     public class CheckInOutHistory
     {
         [Column("CheckInOutHistoryId")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public bool Status { get; set; }
+        public bool Status { get; set; } //(status = true) means books which are occupied by other.
+
         public DateTime CheckOutDate { get; set; }
         public DateTime DueDate { get; set; }
-        public DateTime CheckedInDate { get; set; }
+        public DateTime ReturnDate { get; set; }
 
         [ForeignKey("BookId")]
-        public Book Book { get; set; }
+        public virtual Book Book { get; set; }
 
         [ForeignKey("BorrowerId")]
-        public Borrower Borrower { get; set; }
+        public virtual Borrower Borrower { get; set; }
     }
 }

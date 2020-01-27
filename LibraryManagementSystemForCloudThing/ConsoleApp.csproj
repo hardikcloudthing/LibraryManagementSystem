@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LibraryDataContext\LibraryDataContext.csproj" />
     <ProjectReference Include="..\LibraryModels\LibraryModels.csproj" />
+    <ProjectReference Include="..\LibraryRepository\LibraryRepository.csproj" />
   </ItemGroup>
 
 </Project>
