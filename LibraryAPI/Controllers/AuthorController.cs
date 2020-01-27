@@ -22,6 +22,9 @@ namespace LibraryAPI.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Return Single Author by Id.
+        /// </summary>
         [HttpGet("api/authors/{id}")]
         public async Task<ActionResult<Author>> GetAuthorById(int id)
         {
@@ -31,6 +34,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Return All Authors.
+        /// </summary>
         [HttpGet("api/authors/")]
         public async Task<ActionResult<Author>> GetAuthors()
         {
@@ -40,6 +46,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add Author.
+        /// </summary>
         [HttpPost("api/authors")]
         public async Task<ActionResult<Author>> AddAuthor([FromBody] Author author)
         {
@@ -49,6 +58,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Update Author by Id.
+        /// </summary>
         [HttpPut("api/authors/{id}")]
         public async Task<ActionResult<Author>> UpdateAuthor([FromBody] Author author, int id)
         {
@@ -58,6 +70,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Delete Author By Id.
+        /// </summary>
         [HttpDelete("api/authors/{id}")]
         public async Task<ActionResult> DeleteAuthor(int id)
         {

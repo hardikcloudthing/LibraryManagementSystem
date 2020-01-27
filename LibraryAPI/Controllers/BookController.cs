@@ -22,6 +22,9 @@ namespace LibraryAPI.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Return Single Book by Id.
+        /// </summary>
         [HttpGet("api/books/{id}")]
         public async Task<ActionResult<BookDTO>> GetBookById(int id)
         {
@@ -31,6 +34,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Return All Books.
+        /// </summary>
         [HttpGet("api/books/")]
         public async Task<ActionResult<List<BookDTO>>> GetBooks()
         {
@@ -40,6 +46,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Search Book by ISBN/TITLE/AUTHORNAME.
+        /// </summary>
         [HttpGet("api/books/query/{searchQuery}")]
         public async Task<ActionResult<List<BookDTO>>> SearchBooks(string searchQuery)
         {
@@ -49,6 +58,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add Book.
+        /// </summary>
         [HttpPost("api/books")]
         public async Task<ActionResult<BookDTO>> AddBook([FromBody] BookDTO bookDTO)
         {
@@ -59,6 +71,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add CSV File of Books.
+        /// </summary>
         [HttpPost("api/books/csv")]
         [Consumes("multipart/form-data")]
         public async Task<ActionResult> Uploads([FromForm]IFormFile file)
@@ -70,6 +85,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Update Book.
+        /// </summary>
         [HttpPut("api/books/{id}")]
         public async Task<ActionResult<Book>> UpdateAuthor([FromBody] BookDTO bookDTO, int id)
         {
@@ -80,6 +98,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Delete Book by Id.
+        /// </summary>
         [HttpDelete("api/books/{id}")]
         public async Task<ActionResult> DeleteBook(int id)
         {

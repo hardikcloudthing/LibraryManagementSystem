@@ -22,6 +22,9 @@ namespace LibraryAPI.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Return Single Borrower by Id.
+        /// </summary>
         [HttpGet("api/borrowers/{id}")]
         public async Task<ActionResult<Borrower>> GetBorrowerById(int id)
         {
@@ -31,6 +34,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Return All Borrowers.
+        /// </summary>
         [HttpGet("api/borrowers/")]
         public async Task<ActionResult<Borrower>> GetBorrowers()
         {
@@ -40,6 +46,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add Borrower.
+        /// </summary>
         [HttpPost("api/borrowers")]
         public async Task<ActionResult<Borrower>> AddBorrower([FromBody] Borrower borrower)
         {
@@ -49,6 +58,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add CSV File of Borrowers.
+        /// </summary>
         [HttpPost("api/borrowers/csv")]
         [Consumes("multipart/form-data")]
         public async Task<ActionResult> Uploads([FromForm]IFormFile file)
@@ -60,6 +72,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Update Borrower.
+        /// </summary>
         [HttpPut("api/borrowers/{id}")]
         public async Task<ActionResult<Borrower>> UpdateBorrower([FromBody] Borrower borrower, int id)
         {
@@ -69,6 +84,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Delete Borrower By Id.
+        /// </summary>
         [HttpDelete("api/borrowers/{id}")]
         public async Task<ActionResult> DeleteBorrower(int id)
         {

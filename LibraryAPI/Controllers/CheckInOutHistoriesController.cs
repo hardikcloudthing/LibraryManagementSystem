@@ -7,6 +7,7 @@ using LibraryRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace LibraryAPI.Controllers
 {
@@ -22,6 +23,9 @@ namespace LibraryAPI.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Return Single History By Id.
+        /// </summary>
         [HttpGet("api/histories/{id}")]
         public async Task<ActionResult<CheckInOutHistoryDTOForGet>> GetHistoryById(int id)
         {
@@ -31,6 +35,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Return All History.
+        /// </summary>
         [HttpGet("api/histories/")]
         public async Task<ActionResult<List<CheckInOutHistoryDTOForGet>>> GetHistories()
         {
@@ -40,6 +47,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Search by Status. ('True' means Books are issued.)
+        /// </summary>
         [HttpGet("api/histories/status/{status}")]
         public async Task<ActionResult<List<CheckInOutHistory>>> SearchByStatus(bool status)
         {
@@ -49,15 +59,21 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Search History By Borrower Name or CID.
+        /// </summary>
         [HttpGet("api/histories/query/{searchQuery}")]
         public async Task<ActionResult<List<CheckInOutHistory>>> GetBySearchQuery(string searchQuery)
         {
             var histories = await _librarymanager.GetBySearchQuery(searchQuery);
-            if (histories != null)
+            if (histories.Count() > 0)
                 return Ok(histories);
             return NotFound();
         }
 
+        /// <summary>
+        /// Issue New Book or (Add History).
+        /// </summary>
         [HttpPost("api/histories")]
         public async Task<ActionResult<CheckInOutHistory>> AddHistory([FromBody] CheckInOutHistoryDTO historyDTO)
         {
@@ -68,6 +84,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Update Book.
+        /// </summary>
         [HttpPut("api/histories/{id}")]
         public async Task<ActionResult<Author>> UpdateHistory([FromBody] CheckInOutHistoryDTO historyDTO, int id)
         {
@@ -78,6 +97,9 @@ namespace LibraryAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Delete History By Id.
+        /// </summary>
         [HttpDelete("api/histories/{id}")]
         public async Task<ActionResult> DeleteHistory(int id)
         {

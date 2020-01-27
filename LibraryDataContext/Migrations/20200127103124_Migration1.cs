@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LibraryDataContext.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class Migration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,7 @@ namespace LibraryDataContext.Migrations
                 {
                     BorrowerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CId = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true)
@@ -65,7 +66,7 @@ namespace LibraryDataContext.Migrations
                     Status = table.Column<bool>(nullable: false),
                     CheckOutDate = table.Column<DateTime>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
-                    CheckedInDate = table.Column<DateTime>(nullable: false),
+                    ReturnDate = table.Column<DateTime>(nullable: false),
                     BookId = table.Column<int>(nullable: true),
                     BorrowerId = table.Column<int>(nullable: true)
                 },

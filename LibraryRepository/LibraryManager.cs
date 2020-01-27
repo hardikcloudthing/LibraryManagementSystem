@@ -35,9 +35,10 @@ namespace LibraryRepository
 
         public async Task<int> AddBooks(StreamReader reader)
         {
+            string lines = await reader.ReadLineAsync();
             while (true)
             {
-                string lines = reader.ReadLine();
+                lines = await reader.ReadLineAsync();
                 if (lines == null)
                 {
                     break;
@@ -240,7 +241,7 @@ namespace LibraryRepository
                                                              .Include(h => h.Borrower)
                                                              .ToListAsync();
             if (searchQuery != null)
-                return histories.Where(h => h.Borrower.CId == searchQuery
+                histories = histories.Where(h => h.Borrower.CId == searchQuery
                                        || h.Borrower.Name == searchQuery).ToList();
             return histories.ToList();
         }
