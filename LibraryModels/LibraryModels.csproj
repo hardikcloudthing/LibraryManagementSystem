@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\HardikMaru\source\repos\LibraryManagementSystemForCloudThing\LibraryModels\LibraryModels.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

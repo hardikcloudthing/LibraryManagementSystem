@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LibraryAPI</name>
+    </assembly>
+    <members>
+        <member name="M:LibraryAPI.Controllers.AuthorController.GetAuthorById(System.Int32)">
+            <summary>
+            Return Single Author by Id.
+            </summary>
+            <return>id</return>>
+        </member>
+        <member name="M:LibraryAPI.Controllers.AuthorController.GetAuthors">
+            <summary>
+            Return All Authors.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.AuthorController.AddAuthor(LibraryModels.Author)">
+            <summary>
+            Add Author.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.AuthorController.UpdateAuthor(LibraryModels.Author,System.Int32)">
+            <summary>
+            Update Author by Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.AuthorController.DeleteAuthor(System.Int32)">
+            <summary>
+            Delete Author By Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.GetBookById(System.Int32)">
+            <summary>
+            Return Single Book by Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.GetBooks">
+            <summary>
+            Return All Books.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.SearchBooks(System.String)">
+            <summary>
+            Search Book by ISBN/TITLE/AUTHORNAME.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.AddBook(LibraryModels.BookDTO)">
+            <summary>
+            Add Book.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.Uploads(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Add CSV File of Books.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.UpdateAuthor(LibraryModels.BookDTO,System.Int32)">
+            <summary>
+            Update Book.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BookController.DeleteBook(System.Int32)">
+            <summary>
+            Delete Book by Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BorrowerController.GetBorrowerById(System.Int32)">
+            <summary>
+            Return Single Borrower by Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BorrowerController.GetBorrowers">
+            <summary>
+            Return All Borrowers.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BorrowerController.AddBorrower(LibraryModels.Borrower)">
+            <summary>
+            Add Borrower.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BorrowerController.Uploads(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Add CSV File of Borrowers.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BorrowerController.UpdateBorrower(LibraryModels.Borrower,System.Int32)">
+            <summary>
+            Update Borrower.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BorrowerController.DeleteBorrower(System.Int32)">
+            <summary>
+            Delete Borrower By Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.GetHistoryById(System.Int32)">
+            <summary>
+            Return Single History By Id.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.GetHistories">
+            <summary>
+            Return All History.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.SearchByStatus(System.Boolean)">
+            <summary>
+            Search by Status. ('True' means Books are issued.)
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.GetBySearchQuery(System.String)">
+            <summary>
+            Search History By Borrower Name or CID.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.AddHistory(LibraryModels.CheckInOutHistoryDTO)">
+            <summary>
+            Issue New Book or (Add History).
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.UpdateHistory(LibraryModels.CheckInOutHistoryDTO,System.Int32)">
+            <summary>
+            Update Book.
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CheckInOutHistoriesController.DeleteHistory(System.Int32)">
+            <summary>
+            Delete History By Id.
+            </summary>
+        </member>
+    </members>
+</doc>

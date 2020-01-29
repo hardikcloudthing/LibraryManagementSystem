@@ -17,7 +17,7 @@ namespace LibraryRepository
 
         Task<List<Book>> SearchBooks(string searchQuery);
 
-        Task<Book> UpdateBook(Book book, int id);
+        Task<int> UpdateBook(Book book, int id);
 
         Task<int> DeleteBook(int id);
 
@@ -27,7 +27,7 @@ namespace LibraryRepository
 
         Task<List<Author>> GetAuthors();
 
-        Task<Author> UpdateAuthor(Author author, int id);
+        Task<int> UpdateAuthor(Author author, int id);
 
         Task<int> DeleteAuthor(int id);
 

@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LibraryModels</name>
+    </assembly>
+    <members>
+        <member name="T:LibraryModels.BookDTO">
+            <summary>
+            It contain ID, ISBN, Title and AuthorName.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.BookDTO.Id">
+            <summary>
+            BookDTO ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.BookDTO.ISBN">
+            <summary>
+            ISBN Number of Book.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.BookDTO.Title">
+            <summary>
+            Title of Book.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.BookDTO.AuthorName">
+            <summary>
+            Name of Author.
+            </summary>
+        </member>
+        <member name="T:LibraryModels.CheckInOutHistoryDTO">
+            <summary>
+            It contain Id, Status, CheckOutDate, DueDate, ReturnDate, Borrower ID and Book ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTO.Status">
+            <summary>
+            Status of Book. (status = true) means books which are occupied by other.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTO.CheckOutDate">
+            <summary>
+            Date on which book is issue.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTO.DueDate">
+            <summary>
+            Date When book should return.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTO.ReturnDate">
+            <summary>
+            Date When book returned.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTO.BookId">
+            <summary>
+            Book ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTO.BorrowerId">
+            <summary>
+            Borrower ID.
+            </summary>
+        </member>
+        <member name="T:LibraryModels.CheckInOutHistoryDTOForGet">
+            <summary>
+            It contains status, CheckOutDate, DueDate, ReturnDate , Book Detail and Borrower Detail.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTOForGet.Status">
+            <summary>
+            Status of Book. (status = true) means books which are occupied by other.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTOForGet.CheckOutDate">
+            <summary>
+            Date on which book is issue.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTOForGet.DueDate">
+            <summary>
+            Date When book should return.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTOForGet.ReturnDate">
+            <summary>
+            Date When book returned.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTOForGet.Book">
+            <summary>
+            Book Detail.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistoryDTOForGet.Borrower">
+            <summary>
+            Borrower Detail.
+            </summary>
+        </member>
+        <member name="T:LibraryModels.Author">
+            <summary>
+            It contain ID and Name.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Author.Id">
+            <summary>
+            Author ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Author.Name">
+            <summary>
+            Author Name.
+            </summary>
+        </member>
+        <member name="T:LibraryModels.Book">
+            <summary>
+            It contain ID, ISBN, Title and Author Detail.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Book.Id">
+            <summary>
+            Book ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Book.ISBN">
+            <summary>
+            ISBN Number of Book.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Book.Title">
+            <summary>
+            Title of Book.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Book.Author">
+            <summary>
+            Author Detail.
+            </summary>
+        </member>
+        <member name="T:LibraryModels.Borrower">
+            <summary>
+            It contain Id, CloudthingId, Name, Phone, Email.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Borrower.Id">
+            <summary>
+            Borrower ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Borrower.Name">
+            <summary>
+            Borrower Name.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Borrower.Phone">
+            <summary>
+            Borrower Phone Number.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Borrower.Email">
+            <summary>
+            Borrower Email.
+            </summary>
+        </member>
+        <member name="T:LibraryModels.CheckInOutHistory">
+            <summary>
+            It contain Id, Status, CheckOutDate, DueDate, ReturnDate, Book Detail and Borrower Detail.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.Id">
+            <summary>
+            History ID.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.Status">
+            <summary>
+            Status of Book. (status = true) means books which are occupied by other.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.CheckOutDate">
+            <summary>
+            Date on which book is issue.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.DueDate">
+            <summary>
+            Date When book should return.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.ReturnDate">
+            <summary>
+            Date When book returned.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.Book">
+            <summary>
+            Book Detail.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.CheckInOutHistory.Borrower">
+            <summary>
+            Borrower Detail.
+            </summary>
+        </member>
+    </members>
+</doc>

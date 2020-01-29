@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace LibraryAPI.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     public class BookController : Controller
     {
@@ -29,9 +30,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<BookDTO>> GetBookById(int id)
         {
             var book = await _librarymanager.GetBookById(id);
-            if (book != null)
-                return Ok(_mapper.Map<BookDTO>(book));
-            return NotFound();
+            if (book == null)
+                return NotFound();
+            return Ok(_mapper.Map<BookDTO>(book));
         }
 
         /// <summary>
@@ -41,9 +42,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<List<BookDTO>>> GetBooks()
         {
             var books = await _librarymanager.GetBooks();
-            if (books != null)
-                return Ok(_mapper.Map<List<BookDTO>>(books));
-            return NotFound();
+            if (books == null)
+                return NotFound();
+            return Ok(_mapper.Map<List<BookDTO>>(books));
         }
 
         /// <summary>
@@ -53,22 +54,23 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<List<BookDTO>>> SearchBooks(string searchQuery)
         {
             var books = await _librarymanager.SearchBooks(searchQuery);
-            if (books != null)
-                return Ok(_mapper.Map<List<BookDTO>>(books));
-            return NotFound();
+            if (books == null)
+                return NotFound();
+            return Ok(_mapper.Map<List<BookDTO>>(books));
         }
 
         /// <summary>
         /// Add Book.
         /// </summary>
         [HttpPost("api/books")]
+        //[Produces(typeof(BookDTO))]
         public async Task<ActionResult<BookDTO>> AddBook([FromBody] BookDTO bookDTO)
         {
             var book = _mapper.Map<Book>(bookDTO);
             var checkAdd = await _librarymanager.AddBook(book);
-            if (checkAdd != 0)
-                return Ok(_mapper.Map<BookDTO>(book));
-            return NotFound();
+            if (checkAdd == 0)
+                return NotFound();
+            return Ok(_mapper.Map<BookDTO>(book));
         }
 
         /// <summary>
@@ -80,9 +82,9 @@ namespace LibraryAPI.Controllers
         {
             StreamReader reader = new StreamReader(file.OpenReadStream());
             var checkUpload = await _librarymanager.AddBooks(reader);
-            if (checkUpload != 0)
-                return Ok();
-            return NotFound();
+            if (checkUpload == 0)
+                return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -92,10 +94,10 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<Book>> UpdateAuthor([FromBody] BookDTO bookDTO, int id)
         {
             var book = _mapper.Map<Book>(bookDTO);
-            var updatedBook = await _librarymanager.UpdateBook(book, id);
-            if (updatedBook != null)
-                return Ok(updatedBook);
-            return NotFound();
+            var checkUpdate = await _librarymanager.UpdateBook(book, id);
+            if (checkUpdate == 0)
+                return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -105,9 +107,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult> DeleteBook(int id)
         {
             var checkDelete = await _librarymanager.DeleteBook(id);
-            if (checkDelete != 0)
-                return Ok();
-            return NotFound();
+            if (checkDelete == 0)
+                return NotFound();
+            return Ok();
         }
     }
 }

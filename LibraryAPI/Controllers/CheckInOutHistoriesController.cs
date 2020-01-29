@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace LibraryAPI.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     public class CheckInOutHistoriesController : Controller
     {
@@ -30,9 +31,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<CheckInOutHistoryDTOForGet>> GetHistoryById(int id)
         {
             var history = await _librarymanager.GetHistoryById(id);
-            if (history != null)
-                return Ok(_mapper.Map<CheckInOutHistoryDTOForGet>(history));
-            return NotFound();
+            if (history == null)
+                return NotFound();
+            return Ok(_mapper.Map<CheckInOutHistoryDTOForGet>(history));
         }
 
         /// <summary>
@@ -42,9 +43,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<List<CheckInOutHistoryDTOForGet>>> GetHistories()
         {
             var histories = await _librarymanager.GetHistories();
-            if (histories != null)
-                return Ok(_mapper.Map<List<CheckInOutHistoryDTOForGet>>(histories));
-            return NotFound();
+            if (histories == null)
+                return NotFound();
+            return Ok(_mapper.Map<List<CheckInOutHistoryDTOForGet>>(histories));
         }
 
         /// <summary>
@@ -54,9 +55,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<List<CheckInOutHistory>>> SearchByStatus(bool status)
         {
             var histories = await _librarymanager.SearchByStatus(status);
-            if (histories != null)
-                return Ok(histories);
-            return NotFound();
+            if (histories == null)
+                return NotFound();
+            return Ok(histories);
         }
 
         /// <summary>
@@ -66,9 +67,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<List<CheckInOutHistory>>> GetBySearchQuery(string searchQuery)
         {
             var histories = await _librarymanager.GetBySearchQuery(searchQuery);
-            if (histories.Count() > 0)
-                return Ok(histories);
-            return NotFound();
+            if (histories.Count() == 0)
+                return NotFound();
+            return Ok(histories);
         }
 
         /// <summary>
@@ -79,9 +80,9 @@ namespace LibraryAPI.Controllers
         {
             var history = _mapper.Map<CheckInOutHistory>(historyDTO);
             var checkAdd = await _librarymanager.AddHistory(history);
-            if (checkAdd != 0)
-                return Ok();
-            return NotFound();
+            if (checkAdd == 0)
+                return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -91,10 +92,10 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<Author>> UpdateHistory([FromBody] CheckInOutHistoryDTO historyDTO, int id)
         {
             var history = _mapper.Map<CheckInOutHistory>(historyDTO);
-            var updatedHistory = await _librarymanager.UpdateHistory(history, id);
-            if (updatedHistory != 0)
-                return Ok();
-            return NotFound();
+            var checkUpdate = await _librarymanager.UpdateHistory(history, id);
+            if (checkUpdate == 0)
+                return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -104,9 +105,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult> DeleteHistory(int id)
         {
             var checkDelete = await _librarymanager.DeleteHistory(id);
-            if (checkDelete != 0)
-                return Ok();
-            return NotFound();
+            if (checkDelete == 0)
+                return NotFound();
+            return Ok();
         }
     }
 }

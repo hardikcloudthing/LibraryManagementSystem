@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace LibraryAPI.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     public class BorrowerController : Controller
     {
@@ -29,9 +30,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<Borrower>> GetBorrowerById(int id)
         {
             var borrower = await _librarymanager.GetBorrowerById(id);
-            if (borrower != null)
-                return Ok(borrower);
-            return NotFound();
+            if (borrower == null)
+                return NotFound();
+            return Ok(borrower);
         }
 
         /// <summary>
@@ -41,9 +42,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<Borrower>> GetBorrowers()
         {
             var borrowers = await _librarymanager.GetBorrowers();
-            if (borrowers != null)
-                return Ok(borrowers);
-            return NotFound();
+            if (borrowers == null)
+                return NotFound();
+            return Ok(borrowers);
         }
 
         /// <summary>
@@ -53,9 +54,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult<Borrower>> AddBorrower([FromBody] Borrower borrower)
         {
             var checkAdd = await _librarymanager.AddBorrower(borrower);
-            if (checkAdd != 0)
-                return Ok();
-            return NotFound();
+            if (checkAdd == 0)
+                return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -67,9 +68,9 @@ namespace LibraryAPI.Controllers
         {
             StreamReader reader = new StreamReader(file.OpenReadStream());
             var checkUpload = await _librarymanager.AddBorrowers(reader);
-            if (checkUpload != 0)
-                return Ok();
-            return NotFound();
+            if (checkUpload == 0)
+                return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -78,10 +79,9 @@ namespace LibraryAPI.Controllers
         [HttpPut("api/borrowers/{id}")]
         public async Task<ActionResult<Borrower>> UpdateBorrower([FromBody] Borrower borrower, int id)
         {
-            var updatedBorrower = await _librarymanager.UpdateBorrower(borrower, id);
-            if (updatedBorrower != 0)
-                return Ok();
-            return NotFound();
+                if (await _librarymanager.UpdateBorrower(borrower, id) == 0)
+                    return NotFound();
+            return Ok();
         }
 
         /// <summary>
@@ -91,9 +91,9 @@ namespace LibraryAPI.Controllers
         public async Task<ActionResult> DeleteBorrower(int id)
         {
             var checkDelete = await _librarymanager.DeleteBorrower(id);
-            if (checkDelete != 0)
-                return Ok();
-            return NotFound();
+            if (checkDelete == 0)
+                return NotFound();
+            return Ok();
         }
     }
 }
