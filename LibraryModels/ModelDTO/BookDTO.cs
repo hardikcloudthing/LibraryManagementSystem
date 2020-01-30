@@ -23,6 +23,10 @@ namespace LibraryModels
         /// Title of Book.
         /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// Status of Book. ('True' means book is removed)
+        /// </summary>
+        public bool BookIsRemoved { get; set; }
 
         /// <summary>
         /// Name of Author.

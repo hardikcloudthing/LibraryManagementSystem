@@ -24,6 +24,11 @@
             Title of Book.
             </summary>
         </member>
+        <member name="P:LibraryModels.BookDTO.BookIsRemoved">
+            <summary>
+            Status of Book. ('True' means book is removed)
+            </summary>
+        </member>
         <member name="P:LibraryModels.BookDTO.AuthorName">
             <summary>
             Name of Author.
@@ -132,6 +137,11 @@
         <member name="P:LibraryModels.Book.Title">
             <summary>
             Title of Book.
+            </summary>
+        </member>
+        <member name="P:LibraryModels.Book.BookIsRemoved">
+            <summary>
+            Status of Book. ('True' means book is removed)
             </summary>
         </member>
         <member name="P:LibraryModels.Book.Author">

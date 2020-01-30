@@ -26,6 +26,11 @@ namespace LibraryModels
         public string Title { get; set; }
 
         /// <summary>
+        /// Status of Book. ('True' means book is removed)
+        /// </summary>
+        public bool BookIsRemoved { get; set; } = false;
+
+        /// <summary>
         /// Author Detail.
         /// </summary>
         [ForeignKey("AuthoId")]

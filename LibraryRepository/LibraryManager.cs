@@ -32,6 +32,7 @@ namespace LibraryRepository
 
         public async Task<int> AddBooks(StreamReader reader)
         {
+            var BookAdded = 0;
             string lines = await reader.ReadLineAsync();
             while (true)
             {
@@ -41,11 +42,11 @@ namespace LibraryRepository
                     break;
                 }
                 string[] line = lines.ToLower().Split(",");
-                var author = await context.Authors.FirstOrDefaultAsync(a => a.Name.ToLower().Equals(line[2].Trim()));
+                var author = await context.Authors.FirstOrDefaultAsync(a => a.Name != null && a.Name.ToLower().Equals(line[2].Trim()));
 
                 if (author != null)
                 {
-                    await context.Books.AddAsync(
+                    BookAdded = await AddBook(
                         new Book
                         {
                             ISBN = line[0],
@@ -55,7 +56,7 @@ namespace LibraryRepository
                 }
                 else
                 {
-                    await context.Books.AddAsync(
+                    BookAdded = await AddBook(
                         new Book
                         {
                             ISBN = line[0],
@@ -65,7 +66,7 @@ namespace LibraryRepository
                 }
             }
 
-            return await context.SaveChangesAsync();
+            return BookAdded;
         }
 
         public async Task<Book> GetBookById(int id)
@@ -105,8 +106,10 @@ namespace LibraryRepository
         public async Task<int> DeleteBook(int id)
         {
             var book = await context.Books.FirstOrDefaultAsync(b => b.Id == id);
-            context.Books.Remove(book);
-            return await context.SaveChangesAsync();
+            if (book == null)
+                return 0;
+            book.BookIsRemoved = true;
+            return 1;
         }
 
         public async Task<int> AddAuthor(Author author)
