@@ -39,7 +39,7 @@ namespace LibraryAPI.Authentication
                 var username = credentials[0];
                 var password = credentials[1];
 
-                if (username == "Pluralsight" && password == "Pluralsight")
+                if (username == "hardik" && password == "hardik")
                 {
                     var claims = new[] {
                         new Claim(ClaimTypes.NameIdentifier, username)};

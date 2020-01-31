@@ -93,7 +93,7 @@ namespace LibraryRepository
 
         public async Task<int> UpdateBook(Book book, int id)
         {
-            var author = await context.Authors.FirstOrDefaultAsync(a => a.Name.Equals(book.Author.Name, StringComparison.InvariantCultureIgnoreCase));
+            var author = await context.Authors.FirstOrDefaultAsync(a => a.Name.Equals(book.Author.Name));
             if (author != null)
             {
                 book.Author = author;
